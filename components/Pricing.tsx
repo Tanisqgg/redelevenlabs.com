@@ -130,16 +130,29 @@ export function Pricing() {
               >
                 {/* Header row (name + badge) with fixed height so spacing matches */}
                 <div className="flex items-center gap-3 min-h-[40px]">
-  <p className="text-sm text-white/70">{t.name}</p>
-  {t.blurb && (
-    <span
-      className="badge text-xs whitespace-nowrap max-w-[200px] truncate"
-      title={t.blurb}
-    >
-      {t.blurb}
-    </span>
-  )}
-</div>
+                  <p className="text-sm text-white/70">{t.name}</p>
+                  {t.blurb && (
+                    <span
+                      className="badge text-xs whitespace-nowrap max-w-[200px] truncate"
+                      title={t.blurb}
+                    >
+                      {t.blurb}
+                    </span>
+                  )}
+                </div>
+                
+                {/* Alpha testing indicator for Powerhouse tier */}
+                {t.name === "Powerhouse" && (
+                  <div className="mt-2">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/20 px-3 py-1 text-xs font-medium text-orange-300 border border-orange-500/30">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-400"></span>
+                      </span>
+                      Alpha Testing Available
+                    </span>
+                  </div>
+                )}
 
 
                 {/* Price row: consistent height + /mo alignment, tabular numerals */}
