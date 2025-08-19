@@ -22,7 +22,6 @@ export function Navbar() {
                 <nav className="hidden items-center gap-8 md:flex">
                     <a href="#features" className="text-white/80 hover:text-white">Features</a>
                     <a href="#how" className="text-white/80 hover:text-white">How it works</a>
-                    <a href="#pricing" className="text-white/80 hover:text-white">Pricing</a>
                     <a href="#faq" className="text-white/80 hover:text-white">FAQ</a>
                     <a href="#contact" className="btn-primary">Get a demo</a>
                 </nav>
@@ -43,8 +42,6 @@ export function Navbar() {
                            onClick={() => setOpen(false)}>Features</a>
                         <a href="#how" className="px-2 py-2 text-white/90 hover:text-white"
                            onClick={() => setOpen(false)}>How it works</a>
-                        <a href="#pricing" className="px-2 py-2 text-white/90 hover:text-white"
-                           onClick={() => setOpen(false)}>Pricing</a>
                         <a href="#faq" className="px-2 py-2 text-white/90 hover:text-white"
                            onClick={() => setOpen(false)}>FAQ</a>
                         <a href="#contact" className="px-2 py-2 text-brand hover:text-white"
