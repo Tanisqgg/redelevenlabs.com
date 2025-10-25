@@ -37,14 +37,14 @@ export function Features() {
 
   return (
     <section id="features" className="section">
-      <div className="container">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold md:text-4xl">Built for scale and accuracy</h2>
-          <p className="mt-4 text-white/80">
+      <div className="container px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">Built for scale and accuracy</h2>
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto">
             From pre-upload screening to automated enforcement—plug in the pieces you need.
           </p>
         </div>
-        <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 sm:mt-10 grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map(({ icon: Icon, title, desc }) => (
             <CardFeature key={title} title={title} desc={desc} icon={<Icon className="h-5 w-5 text-brand" />} />
           ))}

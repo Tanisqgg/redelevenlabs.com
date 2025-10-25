@@ -16,7 +16,6 @@ export default function Page() {
       <Features />
       <HowItWorks />
       <FAQ />
-      <CTA />
       <Contact />
       <Footer />
     </main>
