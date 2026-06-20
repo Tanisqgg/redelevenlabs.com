@@ -1,3 +1,6 @@
+const repoName = "redelevenlabs.com";
+const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
@@ -5,6 +8,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  basePath: isGitHubPages ? `/${repoName}` : "",
+  assetPrefix: isGitHubPages ? `/${repoName}/` : "",
   experimental: {
     typedRoutes: true,
   },
