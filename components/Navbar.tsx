@@ -4,6 +4,8 @@ import Link from "next/link";
 import {Menu} from "lucide-react";
 import {useState} from "react";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export function Navbar() {
     const [open, setOpen] = useState(false);
     return (
@@ -11,7 +13,7 @@ export function Navbar() {
             <div className="container flex h-20 sm:h-24 lg:h-28 items-center justify-between">
                 <Link href="#" aria-label="redelevenlabs" className="flex items-center">
                     <img
-                        src="/logo.png"
+                        src={`${basePath}/logo.png`}
                         alt="redelevenlabs"
                         width={400} height={100}
                         className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto object-contain"
