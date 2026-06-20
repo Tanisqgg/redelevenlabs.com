@@ -3,41 +3,127 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0b0b10;
-  --fg: #e6e6f0;
+  --bg: #07070b;
+  --fg: #e9e9f2;
 }
 
-html, body {
-  background: radial-gradient(1200px 600px at 20% -10%, rgba(255, 46, 99, 0.12), transparent),
-              radial-gradient(900px 500px at 80% 10%, rgba(93, 63, 211, 0.18), transparent),
-              #0b0b10;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+html,
+body {
+  background-color: #07070b;
   color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-.glass {
-  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+body {
+  position: relative;
+  overflow-x: hidden;
 }
 
-.section {
-  @apply py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28;
+/* Selection */
+::selection {
+  background: rgba(255, 46, 99, 0.35);
+  color: #fff;
 }
 
-.card {
-  @apply glass rounded-2xl p-6 shadow-soft;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #07070b;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  border: 2px solid #07070b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 46, 99, 0.5);
 }
 
-.btn {
-  @apply inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium tracking-tight transition;
+@layer components {
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 md:py-24 lg:py-28;
+  }
+
+  .card {
+    @apply glass rounded-2xl p-6 shadow-soft;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold tracking-tight transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand text-white shadow-[0_8px_30px_-8px_rgba(255,46,99,0.7)] hover:-translate-y-0.5 hover:bg-brand-400 hover:shadow-[0_14px_40px_-10px_rgba(255,46,99,0.8)];
+  }
+
+  .btn-secondary {
+    @apply btn border border-white/15 bg-white/[0.04] text-white hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.08];
+  }
+
+  .btn-ghost {
+    @apply btn text-white/80 hover:text-white;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1 text-xs font-medium text-white/85 backdrop-blur;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-brand-300;
+  }
+
+  /* Hairline separator with a soft brand glow in the middle */
+  .hairline {
+    @apply h-px w-full border-0 bg-gradient-to-r from-transparent via-white/15 to-transparent;
+  }
 }
 
-.btn-primary {
-  @apply btn bg-brand text-white hover:bg-brand/90;
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-br from-white via-white to-white/55 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-brand {
+    @apply bg-gradient-to-br from-brand-300 via-brand to-iris bg-clip-text text-transparent;
+  }
+
+  /* Animated border-ish card surface that lifts on hover */
+  .surface {
+    @apply relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] transition-all duration-300;
+  }
+  .surface:hover {
+    @apply -translate-y-1 border-white/20 bg-white/[0.06];
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
 }
 
-.btn-secondary {
-  @apply btn bg-white/10 text-white hover:bg-white/20;
-}
-
-.badge {
-  @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/90;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

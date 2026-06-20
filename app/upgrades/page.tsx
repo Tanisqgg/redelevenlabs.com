@@ -1,14 +1,15 @@
+import { Background } from "@/components/Background";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export default function UpgradesPage() {
   return (
-    <main>
+    <>
+      <Background />
       <Navbar />
-      
-      <section className="section">
+      <main>
+      <section className="section pt-32 sm:pt-40">
         <div className="container relative">
-          <div className="absolute inset-0 -z-10 bg-grid bg-[size:32px_32px] opacity-20" />
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-8">
               <div className="w-24 h-24 mx-auto bg-white/10 rounded-full flex items-center justify-center backdrop-blur-xl border border-white/10">
@@ -51,8 +52,8 @@ export default function UpgradesPage() {
           </div>
         </div>
       </section>
-
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

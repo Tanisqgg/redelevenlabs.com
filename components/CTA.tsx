@@ -1,16 +1,35 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 export function CTA() {
   return (
-    <section className="section">
-      <div className="container text-center px-4 sm:px-6 lg:px-8">
-        <div className="card p-6 sm:p-8 lg:p-10">
-          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">Ready to protect your users and brand?</h3>
-          <p className="mt-2 sm:mt-3 text-sm sm:text-base lg:text-lg text-white/80">See redelevenlabs in action with a tailored demo.</p>
-          <Link href="#contact" className="mt-4 sm:mt-6 inline-flex rounded-xl bg-brand px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-medium hover:bg-brand/90 transition-colors">
-            Book a demo
-          </Link>
-        </div>
+    <section className="section scroll-mt-24">
+      <div className="container">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand/15 via-ink-900 to-iris/15 px-6 py-14 text-center sm:px-12 sm:py-20">
+            {/* glow + grid texture */}
+            <div className="pointer-events-none absolute inset-0 bg-grid bg-[size:40px_40px] opacity-[0.12] [mask-image:radial-gradient(70%_70%_at_50%_50%,black,transparent)]" />
+            <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[40rem] -translate-x-1/2 rounded-full bg-brand/25 blur-[120px]" />
+
+            <div className="relative mx-auto max-w-2xl">
+              <h2 className="text-balance text-3xl font-semibold tracking-tight text-gradient sm:text-4xl md:text-5xl">
+                Put an autonomous safety agent on watch.
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-pretty text-base text-white/65 sm:text-lg">
+                See RedElevenLabs detect, verify, and enforce on your real use case — in a tailored 30-minute demo.
+              </p>
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Link href="#contact" className="btn-primary px-8 py-3.5 text-base">
+                  Book a demo <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link href="#platform" className="btn-secondary px-8 py-3.5 text-base">
+                  Explore the platform
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
