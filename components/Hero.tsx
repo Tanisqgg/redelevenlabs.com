@@ -1,55 +1,89 @@
-import { ArrowRight, ShieldCheck, Zap } from "lucide-react";
+"use client";
+
+import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { AgentConsole } from "./AgentConsole";
+
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } }
+};
+const item = {
+  hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
+  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.21, 0.5, 0.27, 1] } }
+};
 
 export function Hero() {
   return (
-    <section className="section">
-      <div className="container relative">
-        <div className="absolute inset-0 -z-10 bg-grid bg-[size:32px_32px] opacity-20" />
-        <div className="mx-auto max-w-4xl text-center px-4 sm:px-6 lg:px-8">
-          <span className="badge mb-4 sm:mb-6 text-xs sm:text-sm">
-            <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4" />
-            Proactive Trust & Safety
-          </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-            Find <span className="text-brand">deepfakes</span> before they spread.
-            <br className="hidden sm:block" />
-            <span className="block sm:inline">Automate takedowns at scale.</span>
-          </h1>
-          <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto">
-            RedElevenLabs scans the web for impersonations and synthetic media—then
-            builds evidence packs and files removals automatically.
-          </p>
-          <div className="mt-6 sm:mt-8 flex flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row">
-            <Link href="#contact" className="btn-primary text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-4">
-              Book a demo <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-            <Link href="#how" className="btn-secondary text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-4">
-              See how it works
-            </Link>
-          </div>
+    <section className="relative overflow-hidden pt-32 sm:pt-36 lg:pt-44">
+      <div className="container">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+          {/* Left: copy */}
+          <motion.div variants={container} initial="hidden" animate="show" className="min-w-0 max-w-xl">
+            <motion.div variants={item}>
+              <span className="badge">
+                <Sparkles className="h-3.5 w-3.5 text-brand-300" />
+                Autonomous agents for trust &amp; safety
+              </span>
+            </motion.div>
 
-          <div className="mt-8 sm:mt-12 grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <div className="card p-4 sm:p-6">
-              <p className="font-semibold text-sm sm:text-base">Pre-upload screening</p>
-              <p className="mt-1 text-xs sm:text-sm text-white/70">APIs to stop risky content before it goes live.</p>
-            </div>
-            <div className="card p-4 sm:p-6">
-              <p className="font-semibold text-sm sm:text-base">Continuous monitoring</p>
-              <p className="mt-1 text-xs sm:text-sm text-white/70">Search the web & platforms for impersonations.</p>
-            </div>
-            <div className="card p-4 sm:p-6 md:col-span-2 lg:col-span-1">
-              <p className="font-semibold text-sm sm:text-base">Automated takedowns</p>
-              <p className="mt-1 text-xs sm:text-sm text-white/70">Evidence packs, DMCA/ToS filings, and tracking.</p>
-            </div>
-          </div>
+            <motion.h1
+              variants={item}
+              className="mt-6 text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
+            >
+              <span className="text-gradient">Defend authenticity at</span>{" "}
+              <span className="text-gradient-brand">machine speed.</span>
+            </motion.h1>
 
-          <div className="mt-8 sm:mt-10 inline-flex items-center gap-2 text-white/70 text-sm sm:text-base">
-            <Zap className="h-4 w-4" />
-            <span className="text-center">Privacy-first • No client secrets in the browser</span>
-          </div>
+            <motion.p variants={item} className="mt-6 text-lg leading-relaxed text-white/65">
+              RedElevenLabs deploys autonomous safety agents that hunt down deepfakes and
+              synthetic media, assemble court-ready evidence, and file takedowns —
+              <span className="text-white/85"> before the damage spreads,</span> with humans in the loop.
+            </motion.p>
+
+            <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="#contact" className="btn-primary px-7 py-3.5 text-base">
+                Book a demo <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link href="#how" className="btn-secondary px-7 py-3.5 text-base">
+                See how the agent works
+              </Link>
+            </motion.div>
+
+            <motion.div
+              variants={item}
+              className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-white/50"
+            >
+              <span className="inline-flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-signal" />
+                Human-in-the-loop by default
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-iris" />
+                Privacy-first &amp; VPC / on-prem
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand" />
+                Court-ready evidence
+              </span>
+            </motion.div>
+          </motion.div>
+
+          {/* Right: live agent console */}
+          <motion.div
+            className="min-w-0"
+            initial={{ opacity: 0, y: 30, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.21, 0.5, 0.27, 1], delay: 0.2 }}
+          >
+            <AgentConsole />
+          </motion.div>
         </div>
       </div>
+
+      {/* fade into next section */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-ink-950/60" />
     </section>
   );
 }
